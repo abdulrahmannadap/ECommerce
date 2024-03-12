@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Category>
+
+    <div>
+        <h1 class="text-center m-3">List Of Product We have</h1>
+    </div>
+    <div>
+    <a asp-controller="Categorys" asp-action="Upsert" class="btn btn-info m-2">ADD</a>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+           <tr>
+               <th>Serial No .</th>
+               <th>Name</th>
+               <th>Actions</th>
+           </tr>
+        </thead>
+        <tbody>
+            @foreach(var categories in Model)
+            {
+                <tr>
+                    <td>@categories.Id</td>
+                    <td>@categories.Name</td>
+                    <td>
+                    <a asp-controller="Categorys" asp-action="Upsert" asp-route-id="@categories.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i>Edit</a>
+                    <a asp-controller="Categorys" asp-action="Delete" asp-route-id="@categories.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+  
